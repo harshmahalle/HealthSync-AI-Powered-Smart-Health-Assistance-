@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Recommendation from './pages/Recommendation';
+import Chatbot from './pages/Chatbot';
+import MentalHealthSupport from './pages/MentalHealthSupport';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import AuthProvider, { AuthContext } from './AuthContext';
 
-function App() {
+const PrivateRoute = ({ element }) => {
+  const { isLoggedIn } = React.useContext(AuthContext);
+  return isLoggedIn ? element : <Navigate to="/login" />;
+};
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/recommendation" element={<PrivateRoute element={<Recommendation />} />} />
+        <Route path="/chatbot" element={<PrivateRoute element={<Chatbot />} />} />
+        <Route path="/mental-health-support" element={<PrivateRoute element={<MentalHealthSupport />} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+    </AuthProvider>
   );
-}
+};
 
 export default App;
+
+
+
