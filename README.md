@@ -1,7 +1,5 @@
-#for backend codebase please visit this 
 
-
-This project was bootstrapped with [Create React App](https://github.com/harshmahalle/HealthSync-AI-Powered-Smart-Health-Assistance-Backend-.git).
+ [for backend codebase please visit this ](https://github.com/harshmahalle/HealthSync-AI-Powered-Smart-Health-Assistance-Backend-.git).
 
 # Getting Started with Create React App
 
