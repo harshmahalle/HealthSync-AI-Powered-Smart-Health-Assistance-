@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-//Regular login
+  //Regular login
   const handleLogin = async (email, password) => {
     try {
       const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {

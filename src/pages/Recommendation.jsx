@@ -42,15 +42,15 @@ const Recommendation = () => {
 
       const prompt = `User data: ${JSON.stringify(userInput)}. Provide a health recommendation.`;
 
-      const apiKey = process.env.REACT_APP_OPENAI_API_KEY; 
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      const apiKey = process.env.REACT_APP_GROQ_API_KEY; 
+      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
+          model: 'gemma2-9b-it',
           messages: [{ role: 'user', content: prompt }],
           //max_tokens: 100,
         }),
@@ -235,6 +235,7 @@ const Recommendation = () => {
                       onChange={(e) => setCustomHealthGoal(e.target.value)}
                       className="mt-2 p-3 w-full border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter your health goal"
+                      required
                     />
                   )}
                 </label>
@@ -251,6 +252,7 @@ const Recommendation = () => {
                     onChange={(e) => setSleepHours(e.target.value)}
                     className="mt-2 p-3 w-full border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter hours of sleep"
+                    required
                   />
                 </label>
 
@@ -275,6 +277,7 @@ const Recommendation = () => {
                     onChange={(e) => setWaterIntake(e.target.value)}
                     className="mt-2 p-3 w-full border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter water intake"
+                    
                   />
                 </label>
 
@@ -287,6 +290,7 @@ const Recommendation = () => {
                     onChange={(e) => setMentalHealth(e.target.value)}
                     className="mt-2 p-3 w-full border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Rate your mental health"
+                    required
                   />
                 </label>
 
@@ -297,6 +301,7 @@ const Recommendation = () => {
                     value={exerciseFrequency}
                     onChange={(e) => setExerciseFrequency(e.target.value)}
                     className="mt-2 p-3 w-full border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                   >
                     <option value="">Select an option</option>
                     <option value="Daily">Daily</option>
